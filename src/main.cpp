@@ -19,14 +19,15 @@ HX711 scale;
 
 const int tareButtonPin = 6; // TARE BUTTON
 
-
+// scale pins
 const int _DoutPin = A3;
 const int _SckPin = A2;
+
 long _offset = 0; // tare value
-int _scale = 500;
+int _scale = 500; // scale factor
 
 
-int period = 500;
+int period = 500; // period of reading scale in ms
 unsigned long time_now = 0;
 unsigned long currentTime = 0;
 
@@ -113,7 +114,6 @@ void updateScaleAndLCD() {
     String writeValue = String(scaleValue);
     writeValue = "<" + writeValue + ">";
     mySerial.println(writeValue.c_str());
-    //Serial.println(scaleValue);
     clearSecondRowAndPositionCursor();
     lcd.print(scaleValue);
     lcd.setCursor(8, 1);
